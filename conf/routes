@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                           controllers.PokemonController.index()
+
+GET     /pokemon                    controllers.PokemonController.filter(filter: PokemonFilter ?= PokemonFilter())
+
+GET     /pokemon/:name              controllers.PokemonController.getByName(name: String)
+
+GET     /pokemon/:name/like           controllers.PokemonLikeController.get(name: String)
+PUT     /pokemon/:name/like           controllers.PokemonLikeController.like(name: String)
+PUT     /pokemon/:name/dislike        controllers.PokemonLikeController.dislike(name: String)
+
+GET     /pokemon/:name/stats          controllers.PokemonStatsController.get(name: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
